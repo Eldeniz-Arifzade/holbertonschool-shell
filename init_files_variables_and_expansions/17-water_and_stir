@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "%s\n" "$( (dec=$(( $(echo -n water | wc -c)#$WATER + $(echo -n stir | wc -c)#$STIR )); out=""; base="shtbeolhc"; while [ $dec -gt 0 ]; do out="${base:$((dec%${#base})):1}$out"; dec=$((dec/${#base})); done; echo $out) )"
