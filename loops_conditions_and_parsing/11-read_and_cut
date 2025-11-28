@@ -2,7 +2,5 @@
 #read and cut using while
 while IFS=: read username _ uid _ _ homedir _;
 do
-    echo "$username"
-    echo "$uid"
-    echo "$homedir"
+    echo "$username:$uid:$homedir"
 done < /etc/passwd
