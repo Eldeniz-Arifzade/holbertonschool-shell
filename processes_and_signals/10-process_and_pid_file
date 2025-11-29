@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #using multiple traps
-echo $$ > /var/run/myscript.pid
+PIDFILE="/tmp/myscript.pid"
+echo $$ > "$PIDFILE"
 trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit' SIGTERM SIGQUIT
 trap "Y U no love me?!" SIGINT
 while true
