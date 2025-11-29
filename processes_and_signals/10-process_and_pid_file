@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 #using multiple traps
-PIDFILE="/tmp/myscript.pid"
-echo $$ > "$PIDFILE"
-trap 'echo "I hate the kill command"; rm -f "$PIDFILE"; exit' SIGTERM SIGQUIT
-trap "Y U no love me?!" SIGINT
-while true
-do
-	echo "To infinity and beyond"
-	sleep 2
+PIDFILE="/var/run/myscript.pid"
+
+# write PID as root
+sudo bash -c "echo $$ > $PIDFILE"
+
+trap 'echo "I hate the kill command"; rm -f $PIDFILE; exit' SIGTERM SIGQUIT
+trap 'echo "Y U no love me?!"' SIGINT
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
 done
